@@ -9,9 +9,11 @@ class Solution:
 
         count = Counter(s)
 
-        for index, character in enumerate(s):
-            if count[character] == 1:
-                return index
+        print(count)
+
+        for i in range(len(s)):
+            if count[s[i]] == 1:
+                return i
 
         return -1
 
