@@ -1,26 +1,26 @@
-
 # 128. Longest Consecutive Sequence
 
-
 class Solution:
-    def productExceptSelf(self, nums: list[int]) -> list[int]:
+    def longestConsecutive(self, nums: list[int]) -> int:
+        longestStreak = 0
+        numSet = set(nums)
 
-        array = [0]*len(nums)
-        array[0] = 1
+        for num in numSet:
 
-        for i in range(1, len(nums)):
-            array[i] = array[i-1] * nums[i-1]
+            if num-1 not in numSet:
+                currentNum = num
+                currentStreak = 1
 
-        postFix = 1
+                while currentNum+1 in numSet:
+                    currentNum += 1
+                    currentStreak += 1
 
-        for i in reversed(range(len(nums))):
-            array[i] = postFix * array[i]
-            postFix *= nums[i]
+                longestStreak = max(longestStreak, currentStreak)
 
-        return array
+        return longestStreak
 
 
 if __name__ == "__main__":
-    nums = [1, 2, 3, 4]
+    nums = [100, 4, 200, 1, 3, 2]
     objectNums = Solution()
-    print(objectNums.productExceptSelf(nums))
+    print(objectNums.longestConsecutive(nums))

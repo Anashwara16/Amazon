@@ -5,7 +5,6 @@
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
 
-        indices = []
         hashmap = {}
 
         for i in range(len(nums)):
